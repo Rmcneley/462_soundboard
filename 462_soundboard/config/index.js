@@ -3,6 +3,6 @@ var configValues = require('./config');
 module.exports = {
     getDbConnectionString: function() {
         return 'mongodb://' + configValues.uname + ':' 
-        + configValues.pwd + '@ds025409.mlab.com:25409/nodetodosample';
+        + configValues.pwd + '@ds053188.mlab.com:53188/sbdb';
     }
 }
