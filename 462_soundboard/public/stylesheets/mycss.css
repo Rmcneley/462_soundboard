@@ -1,0 +1,47 @@
+
+            
+#welcome
+{
+    background-color: #1b1d21;
+    margin-top: 75px;
+    color: aliceblue;
+    text-align: center
+}
+
+#headerBack
+{
+    background-color: #1b1d21;
+    
+}
+
+body
+{
+    background-image: url("../images/SBback2.jpg"); 
+    background-size: 1200px;
+    background-attachment: fixed;
+    background-position: 50% 50%
+}
+
+h3
+{
+    text-align: center
+}
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
