@@ -1,0 +1,22 @@
+extends layout
+
+
+block content
+	div.container
+		div.row
+		br
+		br
+		br 
+		br
+		div.col-sm-2.col-md-2.move
+		div.col-sm-4.col-md-4.move2(ng-controller="sController")
+					ul.user-details
+							table.table-user-information
+									tr
+										td.li Username:
+											td.li(style='padding: 10px;') #{user.username}
+									tr
+										td.li Email:
+											td.li(style='padding: 10px;') #{user.email}
+
+			
