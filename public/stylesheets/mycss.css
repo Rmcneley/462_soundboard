@@ -114,7 +114,7 @@ body {
   border-bottom: 1px solid #c4c4c4;
   border-radius: 5px;
   @include box-shadow(0 1px 5px rgba(black, .25));
-
+  
   &:before, &:after {
     content: '';
     position: absolute;
@@ -171,6 +171,18 @@ input {
   @include box-sizing(border-box);
 }
 
+.soundboard-button {
+  position:relative;
+  vertical-align: top;
+  width : 208px;
+  height: 208px; 
+  margin: 1px 1px;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  background: mediumblue;
+}
+
 .signup-login-input {
   width: 80%;
   height: 50px;
@@ -214,7 +226,7 @@ input {
     @include box-shadow(none);
   }
 }
-	html { overflow: hidden; }
+	html { overflow: auto; }
   
 	canvas { 
 		display: inline-block; 
@@ -222,6 +234,15 @@ input {
 		width: 95%;
 		height: 45%;
 		box-shadow: 0px 0px 10px blue;
+	}
+  #soundboard {
+		display: flex;
+		flex-direction: row;
+    margin-left: 10%;
+		align-items: center;
+		justify-content: space-around;
+		height: 50%;
+		width: 80%;
 	}
 	#controls {
 		display: flex;
@@ -246,13 +267,12 @@ input {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
+    justify-content: space-around;
 	}
 	@media (orientation: landscape) {
 		body { flex-direction: row;}
 		#controls { flex-direction: column; height: 100%; width: 10%;}
-		#viz { height: 100%; width: 90%;}
+		#viz { height: 40%; width: 60%; margin-left: 20%;}
 	}
 
 :-moz-placeholder { color: #ccc; font-weight: 300; }
