@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var blobFile = require('../models/blob');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -30,6 +31,18 @@ module.exports = function(passport){
 		failureRedirect: '/login',
 		failureFlash : true  
 	}));
+
+	router.post('/soundboard', function (req, res) {
+		var newblob = blobFile({
+            blob : req.body.blob
+           });
+           // Code to save it to database
+           newblob.save(function(err) {
+               if (err) throw err;
+			   console.log('success');
+               res.render('profile',{message: req.flash('message')});
+           });
+	});
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){

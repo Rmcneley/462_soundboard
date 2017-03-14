@@ -7,36 +7,32 @@ block content
 		br
 		br 
 		br
-		div(id="viz")
-			canvas(id="analyser" width="100" height="20")
-			canvas(id="wavedisplay" width="100" height="20")
-
-		br
-		br
-		br
-		div(id="soundboard")
-			div.row
+		div(id="soundboard").left-half 
+			div.col
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-			div.row
-				input(type="submit" value="test!" class="soundboard-button")
+			div
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-			div.row
-				input(type="submit" value="test!" class="soundboard-button")
+			div.col
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
 				input(type="submit" value="test!" class="soundboard-button")
+			div.col
 				input(type="submit" value="test!" class="soundboard-button")
-		div(id="controls")
-			img(id="record" src="images/mic128.png" onclick="toggleRecording(this);")
+				input(type="submit" value="test!" class="soundboard-button")
+				input(type="submit" value="test!" class="soundboard-button")
+				input(type="submit" value="test!" class="soundboard-button")
+		div.right-half 
+			div(id="controls")
+				img(id="record" src="images/mic128.png" onclick="toggleRecording(this);")
 			a(id="save" href="#") 
 				img(src="images/save.svg")
+			div(id="viz")
+				canvas(id="analyser" width="100" height="20")
+				canvas(id="wavedisplay" width="100" height="20")

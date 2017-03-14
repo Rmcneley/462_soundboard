@@ -1,4 +1,3 @@
-
 #welcome
 {
     background-color: #1b1d21;
@@ -14,8 +13,7 @@ body{
     background-image: url("../images/SBback2.jpg"); 
     background-size: 1200px;
     background-attachment: fixed;
-    background-position: 50% 50%
-	
+    background-position: 50% 50%	
 }
 
 container{
@@ -30,15 +28,11 @@ ul{
 	padding:0;
 }
 
-header{
-	color: #000000;
-	padding-top:0px;
-	min-height:10px;
-	}
-
-header #branding h1{
-  	font-size: 16px;
+header h1{
+  	font-size: 25px;
+    margin-left: 20px;
 }
+
 header a{
 	color: #000000;
 	text-decoration:none;
@@ -58,13 +52,12 @@ header #branding{
 
 header nav{
 	float:right;
-	margin-top:15px;
   margin-bottom:10px;
   margin-right:20px;
 }
 
 header .highlight, header .current a{
-	color: #000000;
+	color: blue;
 	font-weight:bold;
 }
 
@@ -110,7 +103,7 @@ body {
   margin: 50px auto;
   width: 280px;
   padding: 33px 25px 29px;
-  background: white;
+  background: dodgerblue;
   border-bottom: 1px solid #c4c4c4;
   border-radius: 5px;
   @include box-shadow(0 1px 5px rgba(black, .25));
@@ -142,7 +135,7 @@ body {
   color: #aaa;
   text-align: center;
   text-shadow: 0 1px rgba(white, .75);
-  background: #f7f7f7;
+  background: yellow;
 
   &:before {
     content: '';
@@ -172,15 +165,33 @@ input {
 }
 
 .soundboard-button {
-  position:relative;
-  vertical-align: top;
-  width : 208px;
-  height: 208px; 
-  margin: 1px 1px;
+  border:0;
+  width : 100px;
+  height: 100px; 
+  margin: 2px 2px;
   font-size: 22px;
-  color: white;
+  color: blue;
   text-align: center;
-  background: mediumblue;
+  background: yellow;
+}
+
+#soundboard {
+    margin-left: 5%;
+		align-items: center;
+		height: 50%;
+		width: 80%;
+	}
+
+.left-half {
+  position: absolute;
+  left: 0px;
+  width: 50%;
+}
+
+.right-half {
+  position: absolute;
+  right: 0px;
+  width: 50%;
 }
 
 .signup-login-input {
@@ -213,9 +224,8 @@ input {
   color: white;
   text-align: center;
   text-shadow: 0 1px 2px rgba(black, .25);
-  background: #f0776c;
+  background: Blue;
   border: 0;
-  border-bottom: 2px solid #d76b60;
   border-radius: 5px;
   cursor: pointer;
   @include box-shadow(inset 0 -2px #d76b60);
@@ -234,15 +244,6 @@ input {
 		width: 95%;
 		height: 45%;
 		box-shadow: 0px 0px 10px blue;
-	}
-  #soundboard {
-		display: flex;
-		flex-direction: row;
-    margin-left: 10%;
-		align-items: center;
-		justify-content: space-around;
-		height: 50%;
-		width: 80%;
 	}
 	#controls {
 		display: flex;
@@ -279,7 +280,6 @@ input {
 ::-moz-placeholder { color: #ccc; opacity: 1; font-weight: 300; }
 ::-webkit-input-placeholder { color: #ccc; font-weight: 300; }
 :-ms-input-placeholder { color: #ccc; font-weight: 300; }
-
 ::-moz-focus-inner { border: 0; padding: 0; }
 
 
