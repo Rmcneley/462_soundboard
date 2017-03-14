@@ -115,9 +115,11 @@ DEALINGS IN THE SOFTWARE.
 
     var r = new XMLHttpRequest();
     r.open("POST", "/soundboard");
+    var x = "Hello";
     var data = new FormData();
-    data.append('blob','Hello')
-    r.send(data);
+    data.append('blob', x)
+    r.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    r.send('blob=hello');
   }
 
   window.Recorder = Recorder;
