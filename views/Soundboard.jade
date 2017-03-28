@@ -1,6 +1,20 @@
 extends layout
 
 block content
+	header
+		container(id="branding")
+			h1 SoundPanel
+				nav
+					ul  
+						li
+							a(href='/home')
+								|  Profile
+						li
+							a(href='/journal')
+								|  Journal
+						li
+							a(href='/signout')
+								|  Logout
 	div.container
 		
 		br
@@ -9,25 +23,25 @@ block content
 		br
 		div(id="soundboard").left-half 
 			div.col
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-			div
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
+				input(type="submit" value="1" class="soundboard-button" onclick="pA1()")
+				input(type="submit" value="2" class="soundboard-button" onclick="pA2()")
+				input(type="submit" value="3" class="soundboard-button" onclick="pA3()")
+				input(type="submit" value="4" class="soundboard-button" onclick="pA4()")
 			div.col
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
+				input(type="submit" value="5" class="soundboard-button" onclick="pA5()")
+				input(type="submit" value="6" class="soundboard-button" onclick="pA6()")
+				input(type="submit" value="7" class="soundboard-button" onclick="pA7()")
+				input(type="submit" value="8" class="soundboard-button" onclick="pA8()")
 			div.col
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
-				input(type="submit" value="test!" class="soundboard-button")
+				input(type="submit" value="9" class="soundboard-button" onclick="pA9()")
+				input(type="submit" value="10" class="soundboard-button" onclick="pA10()")
+				input(type="submit" value="11" class="soundboard-button" onclick="pA11()")
+				input(type="submit" value="12" class="soundboard-button" onclick="pA12()")
+			div.col
+				input(type="submit" value="13" class="soundboard-button" onclick="pA13()")
+				input(type="submit" value="14" class="soundboard-button" onclick="pA14()")
+				input(type="submit" value="15" class="soundboard-button" onclick="pA15()")
+				input(type="submit" value="16" class="soundboard-button" onclick="pA16()")
 		div.right-half 
 			div(id="controls")
 				img(id="record" src="images/mic128.png" onclick="toggleRecording(this);")

@@ -2,6 +2,20 @@ extends layout
 
 
 block content
+	header
+		container(id="branding")
+			h1 SoundPanel
+				nav
+					ul  
+						li
+							a(href='/Soundboard')
+								|  Soundboard
+						li
+							a(href='/journal')
+								|  Journal
+						li
+							a(href='/signout')
+								|  Logout
 	div.container
 		div.row
 		br

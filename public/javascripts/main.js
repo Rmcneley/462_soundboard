@@ -49,6 +49,9 @@ function gotBuffers( buffers ) {
 
 function doneEncoding( blob ) {
     Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
+    var filename = "Rec" + ((recIndex<10)?"0":"") + recIndex + ".wav";
+    var newblob = new Blob([blob],{type:'audio/wav'});
+    console.log(filename);
     recIndex++;
 }
 

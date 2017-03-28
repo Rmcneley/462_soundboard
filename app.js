@@ -8,6 +8,7 @@ var db_server  = process.env.DB_ENV || 'primary';
 var dbConfig = require('./config/db');
 var mongoose = require('mongoose');
 var app = express();
+var fs = require('fs');
 
 
 // Connect to DB
