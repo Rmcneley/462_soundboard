@@ -4,12 +4,12 @@ var blobFile = require('../models/blob');
 var fs = require('fs');
 var path = require('path');
 var toBuffer = require('blob-to-buffer')
-var audio1 = path.join(__dirname, 'audio/audio1.mp3');
-var audio2 = path.join(__dirname, 'audio/audio2.mp3');
-var audio3 = path.join(__dirname, 'audio/audio3.mp3');
-var audio4 = path.join(__dirname, 'audio/audio4.mp3');
-var audio5 = path.join(__dirname, 'audio/audio5.mp3');
-var audio6 = path.join(__dirname, 'audio/audio6.mp3');
+var audio1 = path.join(__dirname, 'audio/audio1.wav');
+var audio2 = path.join(__dirname, 'audio/audio2.wav');
+var audio3 = path.join(__dirname, 'audio/audio3.wav');
+var audio4 = path.join(__dirname, 'audio/audio4.wav');
+var audio5 = path.join(__dirname, 'audio/audio5.wav');
+var audio6 = path.join(__dirname, 'audio/audio6.wav');
 var audio7 = path.join(__dirname, 'audio/audio7.wav');
 var audio8 = path.join(__dirname, 'audio/audio8.wav');
 var audio9 = path.join(__dirname, 'audio/audio9.wav');
@@ -50,6 +50,11 @@ module.exports = function(passport){
 		failureRedirect: '/login',
 		failureFlash : true  
 	}));
+
+    router.post('/SbAdd', function (req, res) {
+        fs.renameSync('public/temp.wav','./routes/audio/audio'+req.body.tnum+'.wav')
+		res.render('Soundboard',{message: req.flash('message')});
+    });
 
 	router.post('/soundboard', function (req, res) {
 		//console.log(req.body.blob.toString('utf8'));

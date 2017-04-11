@@ -45,7 +45,7 @@ block content
 		div.right-half.top_half
 			div(id="controls")
 				img(id="record" src="images/Recording.png" onclick="toggleRecording(this);")
-			form(action='/Soundboard', method='POST')
+			form(action='/SbAdd', method='POST')
 				input(type="Number",name='tnum',placeholder="Tile Number",required, autofocus)
 				input(type="submit", value="Save recording to tile?")
 			a(id="save" href="#")
