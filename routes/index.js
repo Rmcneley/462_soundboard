@@ -3,6 +3,7 @@ var router = express.Router();
 var blobFile = require('../models/blob');
 var fs = require('fs');
 var path = require('path');
+var toBuffer = require('blob-to-buffer')
 var audio1 = path.join(__dirname, 'audio/audio1.mp3');
 var audio2 = path.join(__dirname, 'audio/audio2.mp3');
 var audio3 = path.join(__dirname, 'audio/audio3.mp3');
@@ -51,15 +52,26 @@ module.exports = function(passport){
 	}));
 
 	router.post('/soundboard', function (req, res) {
-		var newblob = blobFile({
-            blob : req.body.blob
-           });
-           // Code to save it to database
-           newblob.save(function(err) {
-               if (err) throw err;
-			   console.log('success');
-               res.render('profile',{message: req.flash('message')});
-           });
+		//console.log(req.body.blob.toString('utf8'));
+		req.pipe(fs.createWriteStream('public/temp.wav'))
+		    .on('error', (e) => res.status(500).end(e.message))
+    		.on('close', () => res.end('File saved'))
+		// console.log(req.body.blob);
+		// var curBuffer = new Buffer( req.body, 'binary' );
+		// console.log(curBuffer);
+		//console.log(buffer.toString('utf8'));
+
+		// var newblob = blobFile({
+        //     blob : req.body.blob,
+		// 	num : req.body.tnum
+        //    });
+        //    // Code to save it to database
+        //    newblob.save(function(err) {
+        //        if (err) throw err;
+		// 	   console.log('success');
+        //        res.render('soundboard',{message: req.flash('message')});
+        //    });
+		//var tnum = req.body.tnum;
 	});
 
 	/* GET Registration Page */

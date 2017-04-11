@@ -3,7 +3,7 @@ extends layout
 block content
 	header
 		container(id="branding")
-			h1 SoundPanel
+				img(src="images/SPLogo2.png")
 				nav
 					ul  
 						li
@@ -42,11 +42,20 @@ block content
 				input(type="submit" value="14" class="soundboard-button" onclick="pA14()")
 				input(type="submit" value="15" class="soundboard-button" onclick="pA15()")
 				input(type="submit" value="16" class="soundboard-button" onclick="pA16()")
-		div.right-half 
+		div.right-half.top_half
 			div(id="controls")
-				img(id="record" src="images/mic128.png" onclick="toggleRecording(this);")
-			a(id="save" href="#") 
+				img(id="record" src="images/Recording.png" onclick="toggleRecording(this);")
+			form(action='/Soundboard', method='POST')
+				input(type="Number",name='tnum',placeholder="Tile Number",required, autofocus)
+				input(type="submit", value="Save recording to tile?")
+			a(id="save" href="#")
 				img(src="images/save.svg")
+			br
 			div(id="viz")
 				canvas(id="analyser" width="100" height="20")
-				canvas(id="wavedisplay" width="100" height="20")
+				canvas(id="wavedisplay" width="100" height="10")
+			br
+		div.right-half.bottom-half
+			p --------------------------------------------------------------
+			p filters go here
+			

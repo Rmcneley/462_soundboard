@@ -112,14 +112,19 @@ DEALINGS IN THE SOFTWARE.
     var link = document.getElementById("save");
     link.href = url;
     link.download = filename || 'output.wav';
+    
 
+
+    // var xhr = new XMLHttpRequest(); 
+    // var fd=new FormData(); 
+    // fd.append("Audio10.wav",blob); 
+    // xhr.open("POST","/soundboard",true); 
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // xhr.send(fd);
     var r = new XMLHttpRequest();
-    r.open("POST", "/soundboard");
-    var x = "Hello";
-    // var data = new FormData();
-    // data.append('blob', x)
-    r.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    r.send('blob=',x);
+    r.open("POST", "/soundboard",true);
+    //r.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    r.send(blob);
   }
 
   window.Recorder = Recorder;

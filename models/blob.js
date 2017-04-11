@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('blobFile',{
-	blob: String,
+	blob: Buffer,
+	num: Number,
 	username: String,
     date: Date
 });

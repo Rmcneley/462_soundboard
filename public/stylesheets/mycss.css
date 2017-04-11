@@ -5,7 +5,9 @@
     color: aliceblue;
     text-align: center
 }
-
+logo{
+  padding-top:5;
+}
 body{
 	font: 15px/1.5 Times New Roman, Helvetica, sana-serif;
 	padding:0;
@@ -54,6 +56,7 @@ header nav{
 	float:right;
   margin-bottom:10px;
   margin-right:20px;
+  margin-top:18px;
 }
 
 header .highlight, header .current a{
@@ -193,6 +196,21 @@ input {
   right: 0px;
   width: 50%;
 }
+.right-forty {
+  position: absolute;
+  right: 0px;
+  width: 40%;
+}
+.top-half {
+  position: absolute;
+  top: 0px;
+  height: 50%;
+}
+.bottom-half {
+  position: absolute;
+  bottom: 0px;
+  height: 50%;
+}
 
 .signup-login-input {
   width: 80%;
@@ -276,6 +294,22 @@ input {
 		#viz { height: 40%; width: 60%; margin-left: 20%;}
 	}
 
+td {
+    font-size: 13px;
+    display: table-cell;
+    vertical-align: center;
+}
+#profile
+  {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    background: lightblue;
+    height: 40%;
+    width: 40%;
+    border-radius: 20px;
+    align-items: center;
+  }
 :-moz-placeholder { color: #ccc; font-weight: 300; }
 ::-moz-placeholder { color: #ccc; opacity: 1; font-weight: 300; }
 ::-webkit-input-placeholder { color: #ccc; font-weight: 300; }

@@ -1,10 +1,10 @@
 extends layout
 
-
+img(src="images/SPLogo.png")
 block content
 	header
 		container(id="branding")
-			h1 SoundPanel
+				img(src="images/SPLogo2.png")
 				nav
 					ul  
 						li
@@ -15,22 +15,20 @@ block content
 								|  Journal
 						li
 							a(href='/signout')
-								|  Logout
-	div.container
+								|  Logout		
+	br
+	br
+	br
+	br					
+	div.container(id="profile")
 		div.row
+			h1 #{user.username}
+				div(id="panel-body")
+		div.row
+			img(src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png")
+		div.row
+			table
+				tr
+					td Email:
+					td #{user.email}
 		br
-		br
-		br 
-		br
-		div.col-sm-2.col-md-2.move
-		div.col-sm-4.col-md-4.move2(ng-controller="sController")
-					ul.user-details
-							table.table-user-information
-									tr
-										td.li Username:
-											td.li(style='padding: 10px;') #{user.username}
-									tr
-										td.li Email:
-											td.li(style='padding: 10px;') #{user.email}
-
-			
