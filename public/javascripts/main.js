@@ -49,11 +49,6 @@ function gotBuffers( buffers ) {
 
 function doneEncoding( blob ) {
     Recorder.setupDownload( blob, "myRecording" + ((recIndex<10)?"0":"") + recIndex + ".wav" );
-    // var r = new XMLHttpRequest();
-    // r.open("POST", "/soundboard",true);
-    // r.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // r.send("blob=" + blob);
-    console.log(blob)
     recIndex++;
 }
 
@@ -70,8 +65,10 @@ function toggleRecording( e ) {
         e.classList.add("recording");
         audioRecorder.clear();
         audioRecorder.record();
+
         var r = new XMLHttpRequest();
         r.open("POST", "/soundboard",true);
+        console.log("posting?");
     }
 }
 

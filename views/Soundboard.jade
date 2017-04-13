@@ -7,11 +7,7 @@ block content
 				nav
 					ul  
 						li
-							a(href='/home')
-								|  Profile
-						li
-							a(href='/journal')
-								|  Journal
+								|  Welcome #{user.username}
 						li
 							a(href='/signout')
 								|  Logout
@@ -44,16 +40,17 @@ block content
 				input(type="submit" value="16" class="soundboard-button" onclick="pA16()")
 		div.right-half.top_half
 			div(id="controls")
-				img(id="record" src="images/Recording.png" onclick="toggleRecording(this);")
+				img(id="record" src="images/record1.png" onclick="toggleRecording(this);")
+				br
+				a(id="save" href="#")
+			canvas(id="analyser" width="150" height="15") 
+			canvas(id="wavedisplay" width="100" height="0")
+			br
+			br
 			form(action='/SbAdd', method='POST')
 				input(type="Number",name='tnum',placeholder="Tile Number",required, autofocus)
 				input(type="submit", value="Save recording to tile?")
-			a(id="save" href="#")
-				img(src="images/save.svg")
 			br
-			div(id="viz")
-				canvas(id="analyser" width="100" height="20")
-				canvas(id="wavedisplay" width="100" height="10")
 			br
 		div.right-half.bottom-half
 			p --------------------------------------------------------------

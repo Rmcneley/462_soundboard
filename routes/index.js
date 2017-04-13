@@ -46,14 +46,14 @@ module.exports = function(passport){
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
+		successRedirect: '/Soundboard',
 		failureRedirect: '/login',
 		failureFlash : true  
 	}));
 
-    router.post('/SbAdd', function (req, res) {
+    router.post('/SbAdd', isAuthenticated, function (req, res) {
         fs.renameSync('public/temp.wav','./routes/audio/audio'+req.body.tnum+'.wav')
-		res.render('Soundboard',{message: req.flash('message')});
+		res.render('Soundboard',{ user: req.user });
     });
 
 	router.post('/soundboard', function (req, res) {
