@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var blobFile = require('../models/blob');
+var soundFile = require('../models/sound');
 var fs = require('fs');
 var path = require('path');
-var toBuffer = require('blob-to-buffer')
+var mongodb = require('mongodb');
+var name;
 var audio1 = path.join(__dirname, 'audio/audio1.wav');
 var audio2 = path.join(__dirname, 'audio/audio2.wav');
 var audio3 = path.join(__dirname, 'audio/audio3.wav');
@@ -51,10 +52,71 @@ module.exports = function(passport){
 		failureFlash : true  
 	}));
 
-    router.post('/SbAdd', isAuthenticated, function (req, res) {
-        fs.renameSync('public/temp.wav','./routes/audio/audio'+req.body.tnum+'.wav')
-		res.render('Soundboard',{ user: req.user });
-    });
+    router.post('/SbAdd', isAuthenticated, function(req, res) {
+		var file = fs.readFileSync('public/temp.wav');
+        fs.renameSync('public/temp.wav', './routes/audio/audio' + req.body.tnum + '.wav')
+        //res.render('Soundboard',{ user: req.user });
+        //Get a Mongo client to work with the Mongo server
+		var sound = soundFile({
+                    username: req.user.username,
+                    soundnum: req.body.tnum,
+                    soundfile: file
+           });
+           // Code to save it to database
+           sound.save(function(err) {
+               if (err) throw err;
+			   console.log('success');
+               //res.render('soundboard',{message: req.flash('message')});
+           });
+		res.redirect('/soundboard');
+    });
+
+    //TESTING RETREIVAL OF SOUND FILE FROM DATABASE
+    router.post('/testing', isAuthenticated, function(req, res) {
+
+	// function getSoundQuery(name){	
+   	// 	var query = soundFile.find({soundfile : Sname});
+   	// 	return query;
+	// 	}	
+		
+	// var query =  getSoundQuery('Obi-wan');
+	// 	query.exec(function(err,sound){
+   	// 	if(err)
+    //   		return console.log(err);
+   	// 	soundFile.forEach(function(soundfile){
+    //   		console.log(soundfile.soundfile);
+  	// 		});
+	// 	});
+    //     var userfile = soundFile.findOne({}, function(error, data){
+    // 		console.log(data);
+	// 		});
+		//console.log(file);
+		//console.log(file);
+		//var file = userfile["soundfile"];
+		//console.log(userfile);
+		
+                //var collection = db.collection('sounds');
+                // var userfile = collection.find(
+				// 	{
+                //     user: req.user.username
+                // 	},
+				// 	{
+				// 	soundnum:1,
+				// 	soundfile:1
+				// 	}
+				// )
+                // //THIS IS NOT WORKING
+                // // we want to somehow isolate the soundfile: data
+                // // from the user's database and replace it with the
+                // // temp variable
+                // var file1 = userfile['soundnum'];
+				// console.log(file1);
+                // //fs.writeFile('public/tempT.wav', file);
+                // //fs.renameSync('temp.wav', './routes/audio/audio12.wav');
+                // //res.redirect('/soundboard');
+				res.redirect('/soundboard');     
+    });
+    //---------------------------------------------------------------
 
 	router.post('/soundboard', function (req, res) {
 		//console.log(req.body.blob.toString('utf8'));
@@ -66,9 +128,10 @@ module.exports = function(passport){
 		// console.log(curBuffer);
 		//console.log(buffer.toString('utf8'));
 
-		// var newblob = blobFile({
-        //     blob : req.body.blob,
-		// 	num : req.body.tnum
+		// var sound = soundFile({
+        //     username : req.user.username
+		// 	   soundnum : req.body.tnum
+
         //    });
         //    // Code to save it to database
         //    newblob.save(function(err) {
@@ -84,14 +147,11 @@ module.exports = function(passport){
 		res.render('register',{message: req.flash('message')});
 	});
 
-	/* GET Journal page */
-	router.get('/journal', isAuthenticated, function(req, res){
-		res.render('journal', { user: req.user });
-	});
 
 	/* GET Soundboard page */
 	router.get('/soundboard', isAuthenticated, function(req, res){
 		res.render('Soundboard', { user: req.user });
+
 	});
 
 	/* Handle Registration POST */
@@ -104,6 +164,12 @@ module.exports = function(passport){
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('home', { user: req.user });
+	});
+
+	/* Handle Logout */
+	router.get('/signout',function(req, res) {
+		req.logout();
+		res.redirect('/');
 	});
 
 	router.get('/audio1', function(req, res){
@@ -202,12 +268,6 @@ module.exports = function(passport){
     	readStream.pipe(res);
 	});
 	
-	/* Handle Logout */
-	router.get('/signout', function(req, res) {
-		req.logout();
-		res.redirect('/');
-	});
-
 	return router;
 }
 
