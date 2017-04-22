@@ -53,26 +53,33 @@ module.exports = function(passport){
 	}));
 
     router.post('/SbAdd', isAuthenticated, function(req, res) {
+		var number = req.body.tnum;
 		var file = fs.readFileSync('public/temp.wav');
-        fs.renameSync('public/temp.wav', './routes/audio/audio' + req.body.tnum + '.wav')
-        //res.render('Soundboard',{ user: req.user });
-        //Get a Mongo client to work with the Mongo server
+        fs.renameSync('public/temp.wav', './routes/audio/audio' + number + '.wav')
 		var sound = soundFile({
                     username: req.user.username,
-                    soundnum: req.body.tnum,
+                    soundnum: number,
                     soundfile: file
            });
-           // Code to save it to database
-           sound.save(function(err) {
-               if (err) throw err;
-			   console.log('success');
-               //res.render('soundboard',{message: req.flash('message')});
+		soundFile.findOneAndUpdate({username: 'doug', soundnum: number}, {soundfile: file},
+		{upsert: true}, function(err, doc){
+			if(err) throw err;
+		});
+			   console.log('\nSuccessfully saved to the Database\n');
+			   res.redirect('/soundboard');
            });
-		res.redirect('/soundboard');
-    });
 
-    //TESTING RETREIVAL OF SOUND FILE FROM DATABASE
-    router.post('/testing', isAuthenticated, function(req, res) {
+    router.get('/testing', isAuthenticated, function(req, res) {
+		soundFile.findOne({username: req.user.username, soundnum: '12'}, function (err, soundRetreived){
+		if (err) return handleError(err);
+		console.log( soundRetreived.username, '\'s sound has been saved in tempT.wav');
+		//the sound variable is carrying the info
+		fs.writeFile('public/tempT.wav', soundRetreived.soundfile, function(err){
+			if (err) throw err;
+			console.log('\nFile Saved Successfully.\n');
+		});
+	})
+
 
 	// function getSoundQuery(name){	
    	// 	var query = soundFile.find({soundfile : Sname});
