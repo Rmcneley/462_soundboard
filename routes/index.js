@@ -73,7 +73,17 @@ module.exports = function(passport){
 
     //TESTING RETREIVAL OF SOUND FILE FROM DATABASE
     router.post('/testing', isAuthenticated, function(req, res) {
-
+		soundFile.findOne({username: req.user.username}, function (err, sound){
+		if (err) return handleError(err);
+		//console.log('\n\n\n\n TEST IS WORKING', sound.username, '\n\n\n\n');
+		//console.log(sound.soundfile);
+		var file = sound.soundfile;
+		var TN = sound.soundnum;
+		console.log(file);
+		fs.writeFile('public/tempT.wav', file);
+		fs.renameSync('public/tempT.wav', './routes/audio/audio' + TN + '.wav');
+	});
+		//the sound variable is carrying the info
 	// function getSoundQuery(name){	
    	// 	var query = soundFile.find({soundfile : Sname});
    	// 	return query;
@@ -113,7 +123,6 @@ module.exports = function(passport){
 				// console.log(file1);
                 // //fs.writeFile('public/tempT.wav', file);
                 // //fs.renameSync('temp.wav', './routes/audio/audio12.wav');
-                // //res.redirect('/soundboard');
 				res.redirect('/soundboard');     
     });
     //---------------------------------------------------------------
