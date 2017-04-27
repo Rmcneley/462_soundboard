@@ -1,100 +1,10 @@
 #welcome
 {
-    background-color: lightblue;
-    opacity:0.5;
+    background-color: #1b1d21;
+    margin-top: 75px;
     color: aliceblue;
-    text-align: left;
-    border-radius: 20px;
-    width: 600px;
-    height:200px
+    text-align: center
 }
-.backmain {
-    background: rgba(109, 201, 255, 0.5);
-    width: 600px;
-    height:225px;
-    border-radius: 20px;
-}
-[class*="col-"] {
-    float: left;
-    padding: 25px;
-}
-.col-1 {width: 15%;}
-.col-2 {width: 2%;}
-.col-3 {width: 20%;}
-.col-4 {width: 2%;}
-.col-5 {width: 15%;}
-
-.left-half {
-  position: absolute;
-  float:left;
-  left: 0px;
-}
-.left-ish {
-  position: relative;
-  float:left;
-  left: 0px;
-}
-
-.right-half {
-  position: absolute;
-  float:left;
-  right: 0px;
-  width: 50%;
-}
-.right-ish {
-  position:relative;
-  left: 500px;
-}
-.top-half {
-  position: absolute;
-  height: 50%;
-}
-.bottom-half {
-  position: relative;
-  top:20px
-}
-#profile
-  {
-    margin:auto;
-    background: lightblue;
-    height: 20%;
-    width: 20%;
-    border-radius: 20px;
-    align-items: left;
-  }
-.soundboard-button {
-  border:0;
-  width : 100px;
-  height: 100px; 
-  margin: 2px 2px;
-  font-size: 22px;
-  color: blue;
-  text-align: center;
-  background: yellow;
-}
-.seq-button {
-  border:0;
-  width : 25px;
-  height: 25px; 
-  margin: 1px 1px;
-  font-size: 5px;
-  color: blue;
-  text-align: center;
-  background: yellow;
-}
-#soundboard {
-    margin-left: 30px;
-		align-items: center;
-		height: 50%;
-		width: 80%;
-	}
-
-#sequence {
-    margin-left: 5%;
-		align-items: center;
-		height: 5%;
-		width: 8%;
-	}
 logo{
   padding-top:5;
 }
@@ -102,21 +12,17 @@ body{
 	font: 15px/1.5 Times New Roman, Helvetica, sana-serif;
 	padding:0;
 	margin:0;
-  background-image: url("../images/SBback2.jpg"); 
-  background-size: 1200px;
-  background-attachment: fixed;
-  background-position: 0px 0px; 
+    background-image: url("../images/SBback2.jpg"); 
+    background-size: 1200px;
+    background-attachment: fixed;
+    background-position: 50% 50%	
 }
 
-container {
+container{
   background-image: url("../images/WPtexture.jpg");
 	width:100%;
 	margin:auto;
 	overflow:hidden;
-}
-
-.container1{
-  display: flex
 }
 
 ul{
@@ -188,11 +94,13 @@ header .highlight, header .current a{
  * Licensed under the MIT License:
  * http://www.opensource.org/licenses/mit-license.php
  */
+
 body {
-    font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #404040;
-    background: #596778;
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #404040;
+  background: #596778;
 }
+
 .signup-login {
   position: relative;
   margin: 50px auto;
@@ -257,6 +165,51 @@ input {
   font-family: inherit;
   color: inherit;
   @include box-sizing(border-box);
+}
+
+.soundboard-button {
+  border:0;
+  width : 100px;
+  height: 100px; 
+  margin: 2px 2px;
+  font-size: 22px;
+  color: blue;
+  text-align: center;
+  background: yellow;
+}
+
+#soundboard {
+    margin-left: 5%;
+		align-items: center;
+		height: 50%;
+		width: 80%;
+	}
+
+.left-half {
+  position: absolute;
+  left: 0px;
+  width: 50%;
+}
+
+.right-half {
+  position: absolute;
+  right: 0px;
+  width: 50%;
+}
+.right-forty {
+  position: absolute;
+  right: 0px;
+  width: 40%;
+}
+.top-half {
+  position: absolute;
+  top: 0px;
+  height: 50%;
+}
+.bottom-half {
+  position: absolute;
+  bottom: 0px;
+  height: 50%;
 }
 
 .signup-login-input {
@@ -345,7 +298,17 @@ td {
     display: table-cell;
     vertical-align: center;
 }
-
+#profile
+  {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    background: lightblue;
+    height: 40%;
+    width: 40%;
+    border-radius: 20px;
+    align-items: center;
+  }
 :-moz-placeholder { color: #ccc; font-weight: 300; }
 ::-moz-placeholder { color: #ccc; opacity: 1; font-weight: 300; }
 ::-webkit-input-placeholder { color: #ccc; font-weight: 300; }

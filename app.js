@@ -12,6 +12,7 @@ var fs = require('fs');
 
 
 // Connect to DB
+mongoose.Promise = global.Promise;
 db = mongoose.connect(dbConfig.url);
 
 // If the connection throws an error
