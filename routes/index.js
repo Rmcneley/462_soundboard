@@ -58,41 +58,23 @@ module.exports = function(passport) {
 
     router.post('/SbAdd', isAuthenticated, function(req, res) {
         var number = req.body.tnum;
+        var query = "soundfile" + number;
         var file = fs.readFileSync('public/temp.wav');
         fs.renameSync('public/temp.wav', './routes/audio/audio' + number + '.wav')
         var sound = soundFile({
             username: req.user.username,
-            soundnum: number,
-            soundfile: file
+            [query]: file
         });
         soundFile.findOneAndUpdate({
             username: req.user.username,
-            soundnum: number
         }, {
-            soundfile: file
+            [query]: file
         }, {
             upsert: true
         }, function(err, doc) {
             if (err) throw err;
         });
         console.log('\nSuccessfully saved to the Database\n');
-        res.redirect('/soundboard');
-    });
-
-    router.get('/testing', isAuthenticated, function(req, res) {
-        soundFile.findOne({
-            username: req.user.username,
-            soundnum: '12'
-        }, function(err, soundRetreived) {
-            if (err) return handleError(err);
-            console.log(soundRetreived.username, '\'s sound has been saved in tempT.wav');
-            //the sound variable is carrying the info
-            fs.writeFileSync('public/tempT.wav', soundRetreived.soundfile, function(err) {
-                if (err) throw err;
-                console.log('\nFile Saved Successfully.\n');
-            });
-        })
-
         res.redirect('/soundboard');
     });
 
@@ -126,45 +108,176 @@ module.exports = function(passport) {
     }));
 
 
-router.get('/initialize', isAuthenticated, function(req, res) {
-    //add message like "LOADING" or "INITIALIZING"
-    var blankfile = fs.readFileSync('public/Silent.wav');
-       soundFile.findoneandUpdateAsync({
-        username: req.user.username,
-        soundnum: 1
-    }, {
-        soundfile: blankfile
-    }, {
-        upsert: true
-    }, function(err, doc) {
-        if (err) throw err;
-        console.log('\nSuccessfully saved to the Database\n' + count);
-    })
-
-    })
-
-	router.get('/initsoundboard', isAuthenticated, function(req, res){
-        var arr = new Array(15);
-        var count = 1;
-		
-		soundFile.findOne({
+    router.get('/initialize', isAuthenticated, function(req, res) {
+        //add message like "LOADING" or "INITIALIZING"
+        var blankfile = fs.readFileSync('public/Silent.wav');
+        soundFile.findOneAndUpdate({
             username: req.user.username,
-            soundnum: count
+        }, {
+            soundfile1: blankfile,
+            soundfile2: blankfile,
+            soundfile3: blankfile,
+            soundfile4: blankfile,
+            soundfile5: blankfile,
+            soundfile6: blankfile,
+            soundfile7: blankfile,
+            soundfile8: blankfile,
+            soundfile9: blankfile,
+            soundfile10: blankfile,
+            soundfile11: blankfile,
+            soundfile12: blankfile,
+            soundfile13: blankfile,
+            soundfile14: blankfile,
+            soundfile15: blankfile,
+            soundfile16: blankfile,
+        }, {
+            upsert: true
+        }, function(err, doc) {
+            if (err) throw err;
+            console.log('\nSuccessfully saved to the Database\n');
+        })
+        res.redirect('/initsoundboard');
+    })
+
+    router.get('/initsoundboard', isAuthenticated, function(req, res) {
+        soundFile.findOne({
+            username: req.user.username,
         }, function(err, soundRetrieved) {
             if (err) return handleError(err);
             console.log(soundRetrieved.username, 'success');
-            fs.writeFile('public/tempfile.wav', 
-			soundRetrieved.soundfile, function(err) {
-                if (err) throw err;
-                console.log('\nFile Saved Successfully.' + count + '\n');
-            });
+            //write file 1
+            fs.writeFile('./routes/audio/audio1.wav',
+                soundRetrieved.soundfile1,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 1 Saved Successfully.\n');
+                });
+            //end of write 1
+            //write file 2
+            fs.writeFile('./routes/audio/audio2.wav',
+                soundRetrieved.soundfile2,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 2 Saved Successfully.\n');
+                });
+            //end of write 2
+            //write file 3
+            fs.writeFile('./routes/audio/audio3.wav',
+                soundRetrieved.soundfile3,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 3 Saved Successfully.\n');
+                });
+            //end of write 3
+            //write file 4
+            fs.writeFile('./routes/audio/audio4.wav',
+                soundRetrieved.soundfile4,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 4 Saved Successfully.\n');
+                });
+            //end of write 4
+            //write file 5
+            fs.writeFile('./routes/audio/audio5.wav',
+                soundRetrieved.soundfile5,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 5 Saved Successfully.\n');
+                });
+            //end of write 5
+            //write file 6
+            fs.writeFile('./routes/audio/audio6.wav',
+                soundRetrieved.soundfile6,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 6 Saved Successfully.\n');
+                });
+            //end of write 6
+            //write file 7
+            fs.writeFile('./routes/audio/audio7.wav',
+                soundRetrieved.soundfile7,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 7 Saved Successfully.\n');
+                });
+            //end of write 7
+            //write file 8
+            fs.writeFile('./routes/audio/audio8.wav',
+                soundRetrieved.soundfile8,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 8 Saved Successfully.\n');
+                });
+            //end of write 8
+            //write file 9
+            fs.writeFile('./routes/audio/audio9.wav',
+                soundRetrieved.soundfile9,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 9 Saved Successfully.\n');
+                });
+            //end of write 9
+            //write file 10
+            fs.writeFile('./routes/audio/audio10.wav',
+                soundRetrieved.soundfile10,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 10 Saved Successfully.\n');
+                });
+            //end of write 10
+            //write file 11
+            fs.writeFile('./routes/audio/audio11.wav',
+                soundRetrieved.soundfile11,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 11 Saved Successfully.\n');
+                });
+            //end of write 11
+            //write file 12
+            fs.writeFile('./routes/audio/audio12.wav',
+                soundRetrieved.soundfile12,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 12 Saved Successfully.\n');
+                });
+            //end of write 12
+            //write file 13
+            fs.writeFile('./routes/audio/audio13.wav',
+                soundRetrieved.soundfile13,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 13 Saved Successfully.\n');
+                });
+            //end of write 13
+            //write file 14
+            fs.writeFile('./routes/audio/audio14.wav',
+                soundRetrieved.soundfile14,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 14 Saved Successfully.\n');
+                });
+            //end of write 14
+            //write file 15
+            fs.writeFile('./routes/audio/audio15.wav',
+                soundRetrieved.soundfile15,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 15 Saved Successfully.\n');
+                });
+            //end of write 15
+            //write file 16
+            fs.writeFile('./routes/audio/audio16.wav',
+                soundRetrieved.soundfile16,
+                function(err) {
+                    if (err) throw err;
+                    console.log('\nFile 16 Saved Successfully.\n');
+                });
+            //end of write 16*/
         })
-		fs.renameSync('public/tempfile.wav', './routes/audio/;audio' + count + '.wav');
-        count++;
-        arr.forEach(function(soundfunc) {
-        soundfunc();
-    })
+        res.redirect('/soundboard');
     });
+
+
     /* GET Home Page */
     router.get('/home', isAuthenticated, function(req, res) {
         res.render('home', {
