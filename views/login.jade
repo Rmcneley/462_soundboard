@@ -20,4 +20,6 @@ block content
 			input(type="password", name='password', class="signup-login-input", placeholder="What's your password?", required)
 			input(type="submit", value="Login!", class="signup-login-button")
 			span.clearfix
-			a(href='/signup', class='text-center new-account') Create an account
+				#message
+					if message
+						h1.text-center.error-message #{message}

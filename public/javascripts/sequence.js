@@ -30,10 +30,7 @@ function playseq()
             else if(sequence[i]==13){pA13();}
             else if(sequence[i]==14){pA14();}
             else if(sequence[i]==15){pA15();}
-            else if(sequence[i]==16){pA16();}
-            console.log(i);   
-            console.log(count);
-            console.log(sequence[i]);      
+            else if(sequence[i]==16){pA16();}   
             i++;                     
             if (i < count) {            
                 seqLoop();            
@@ -43,7 +40,7 @@ function playseq()
                 sequence = [];
                 count = 0;
             }                     
-         }, 1500)
+         }, 750)
     }
     
     if(sequence[i]==1){pA1();}

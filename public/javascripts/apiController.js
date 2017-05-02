@@ -89,5 +89,4 @@ module.exports = function(app) {
     //     console.log(users)
     //     });
 
-}					//form(action='/testing', method='POST')
-						//input(type="submit" value="testing" class="soundboard-button")
+}
