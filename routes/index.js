@@ -107,6 +107,18 @@ module.exports = function(passport) {
         failureFlash: true
     }));
 
+    /* GET Home Page */
+    router.get('/home', isAuthenticated, function(req, res) {
+        res.render('home', {
+            message: req.flash('message')
+        });
+    });
+
+    /* Handle Logout */
+    router.get('/signout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 
     router.get('/initialize', isAuthenticated, function(req, res) {
         //add message like "LOADING" or "INITIALIZING"
@@ -276,19 +288,10 @@ module.exports = function(passport) {
                 });
             //end of write 16*/
         })
+        setTimeout(function(){
         res.redirect('/soundboard');
-    });
+        }, 2000);
 
-
-    /* GET Home Page */
-    router.get('/home', isAuthenticated, function(req, res) {
-        res.render('home', {user: req.user});
-    });
-
-    /* Handle Logout */
-    router.get('/signout', function(req, res) {
-        req.logout();
-        res.redirect('/');
     });
 
     router.get('/audio1', function(req, res) {
